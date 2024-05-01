@@ -9,7 +9,7 @@ const buttonStyles = cva(["hover:bg-secondary-hover", "transition-colors"], {
     },
 
     size: {
-      default: ["rounder", "p-2"],
+      default: ["rounded", "p-2"],
       icon: [
         "rounded-full",
         "w-10",
