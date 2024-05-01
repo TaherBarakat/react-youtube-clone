@@ -1,11 +1,24 @@
-import { Menu, Bell, Upload, User, Search, Mic } from "lucide-react";
+import {
+  Menu,
+  Bell,
+  Upload,
+  User,
+  Search,
+  Mic,
+  ArrowBigLeft,
+  ArrowLeft,
+} from "lucide-react";
 import Logo from "../assets/Logo.png";
 import Button from "../assets/components/Button";
+import { useState } from "react";
 
 export default function PageHeader() {
+  const [showFullWidthSearch, setShowFullWidthSearch] = useState(false);
   return (
     <div className="mx-4 mb-6  flex justify-between gap-10 pt-2 lg:gap-20">
-      <div className="flex flex-shrink-0 items-center gap-4">
+      <div
+        className={`${showFullWidthSearch ? "hidden" : "flex"} flex-shrink-0 items-center gap-4`}
+      >
         <Button variant={"ghost"} size={"icon"}>
           <Menu />
         </Button>
@@ -15,7 +28,20 @@ export default function PageHeader() {
         </a>
       </div>
 
-      <form className=" hidden flex-grow justify-center gap-4 md:flex">
+      <form
+        className={` ${showFullWidthSearch ? "flex" : "hidden md:flex "}  flex-grow justify-center gap-4 `}
+      >
+        {setShowFullWidthSearch && (
+          <Button
+            type="button"
+            className="flex-shrink-0 "
+            size={"icon"}
+            variant={"ghost"}
+            onClick={() => setShowFullWidthSearch(false)}
+          >
+            <ArrowLeft />
+          </Button>
+        )}
         <div className="flex max-w-[600px] flex-grow">
           <input
             type="search"
@@ -33,8 +59,15 @@ export default function PageHeader() {
           <Mic />
         </Button>
       </form>
-      <div className="flex flex-shrink-0 md:gap-2 ">
-        <Button size={"icon"} variant={"ghost"} className="md:hidden">
+      <div
+        className={`${showFullWidthSearch ? "hidden" : "flex"} flex-shrink-0 md:gap-2 `}
+      >
+        <Button
+          onClick={() => setShowFullWidthSearch(true)}
+          size={"icon"}
+          variant={"ghost"}
+          className="md:hidden"
+        >
           <Search />
         </Button>
         <Button size={"icon"} variant={"ghost"} className="md:hidden">
