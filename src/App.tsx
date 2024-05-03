@@ -1,7 +1,8 @@
 import { useState } from "react";
-import CategoryPills from "./assets/components/CategoryPills";
-import { categories } from "./data/home";
+import CategoryPills from "./components/CategoryPills";
+import { categories, videos } from "./data/home";
 import PageHeader from "./layout/PageHeader";
+import VideoGridItem from "./components/VideoGridItem";
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   return (
@@ -16,6 +17,11 @@ function App() {
               selectedCategory={selectedCategory}
               onSelect={setSelectedCategory}
             />
+          </div>
+          <div className="grid  grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 ">
+            {videos.map((video) => (
+              <VideoGridItem key={video.id} {...video} />
+            ))}
           </div>
         </div>
       </div>

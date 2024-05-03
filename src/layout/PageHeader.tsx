@@ -9,7 +9,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import Logo from "../assets/Logo.png";
-import Button from "../assets/components/Button";
+import Button from "../components/Button";
 import { useState } from "react";
 
 export default function PageHeader() {
